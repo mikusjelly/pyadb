@@ -135,6 +135,8 @@ class ADB():
         # For compat of windows
         cmd_list = self.__build_command__(cmd)
 
+        print(cmd_list)
+
         adb_proc = subprocess.Popen(cmd_list, stdin=subprocess.PIPE,
                                     stdout=subprocess.PIPE,
                                     stderr=subprocess.PIPE,

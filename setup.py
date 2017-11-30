@@ -1,14 +1,14 @@
 import os
-from distutils.core import setup
+from setuptools import setup
 
 
 def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+    return open(os.path.join(os.path.dirname(__file__), fname), encoding='utf-8').read()
 
 
 setup(
     name="pyadb3",
-    version="0.1.4",
+    version="1.0.0",
     author="mikusjelly",
     author_email="mikusjelly@gmail.com",
     description=(
@@ -19,7 +19,7 @@ setup(
     packages=['pyadb3'],
     long_description=read('README.md'),
     classifiers=[
-        "Development Status :: 4 - Alpha",
+        "Development Status :: 4 - Beta",
         "Topic :: Utilities",
         "Programming Language :: Python :: 3 :: Only",
         "License :: OSI Approved :: BSD License",
