@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name="pyadb3",
-    version="1.0.1",
+    version="1.0.2",
     author="mikusjelly",
     author_email="mikusjelly@gmail.com",
     description=(

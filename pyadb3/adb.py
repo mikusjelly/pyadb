@@ -53,7 +53,7 @@ class ADB():
         we set the global flag 'NEED_RESTART_ADB' to False.
         '''
         adb_shell_args_test = ['ls', '-l', '/']
-        ret = self.shell_command(adb_shell_args_test)
+        ret = self.run_shell_cmd(adb_shell_args_test)
         if ret is None:
             self.try_times += 1
             if self.try_times > 3:
@@ -142,7 +142,7 @@ class ADB():
         (self.__output, self.__error) = adb_proc.communicate()
         self.__return = adb_proc.returncode
 
-    def shell_command(self, cmd):
+    def run_shell_cmd(self, cmd):
         '''
         Executes a shell command
         adb shell <cmd>
@@ -296,7 +296,7 @@ class ADB():
         return self.__output
 
     def check_root(self):
-        self.shell_command(['whoami'])
+        self.run_shell_cmd(['whoami'])
         return 'root' in self.get_output().decode()
 
     def set_system_rw(self):
@@ -483,7 +483,7 @@ class ADB():
         '''
         Look for a binary file on the device
         '''
-        self.shell_command(['which', name])
+        self.run_shell_cmd(['which', name])
 
         if self.__output is None:  # not found
             self.__error = "'%s' was not found" % name
@@ -500,7 +500,7 @@ if __name__ == "__main__":
     adb = ADB()
     for item in adb.devices:
         print(item)
-    adb.shell_command('ps | grep u0_a1')
+    adb.run_shell_cmd('ps | grep u0_a1')
     print(adb.get_output().decode())
 
     if adb.check_root():
